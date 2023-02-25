@@ -8,7 +8,9 @@ const StyledThanks = styled.div`
 const Thanks = () => {
   return (
     <StyledThanks>
-        Thank You
+      <div>
+        <p>Thanks for participating.</p>
+      </div>
     </StyledThanks>
   )
 }
