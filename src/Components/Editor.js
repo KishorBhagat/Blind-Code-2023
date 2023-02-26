@@ -14,19 +14,10 @@ const StyledEditor = styled.div`
             width: 100%;
             resize: none;
             background-color: black;
-            /* border: none; */
-            border-top: 2px solid #D7D7D7;
-            border-right: 2px solid #D7D7D7;
-            /* border-left: none;
-            border-bottom: none; */
-            border-left: 2px solid #D7D7D7;
-            border-bottom: 2px solid #D7D7D7;
-
+            border: 2px solid #D7D7D7;
             padding: 10px 15px;
             font-size: 18px;
             caret-color: currentColor;
-            /* color: black; */
-            
             ::selection {
                 background-color: transparent;
             }
@@ -38,12 +29,11 @@ const StyledEditor = styled.div`
             }
             ::-webkit-scrollbar-thumb {
                 background: #D7D7D7;
-                /* background: #000; */
                 border-radius: 10px;
             }
             :focus{
                 outline: none;
-                border: 2px solid red;
+                border: 2px solid #08f308;
             }
         }
     }
@@ -106,10 +96,21 @@ const Editor = (props, ref) => {
         getQuestion();
     }
 
+
+    const handleKey = (e)=> {
+        // console.log(e.code);
+        if(e.code == 'Tab'){
+            e.preventDefault();
+            // console.log("hey indent req");
+            // console.log(ref.current.value + '\t' + "Tabbed");
+            ref.current.value = ref.current.value + '    ';
+        }
+    }
+
     return (
         <StyledEditor className='editor'>
             <form id='editorForm'>
-                <textarea spellCheck="false" ref={ref}></textarea>
+                <textarea spellCheck="false" ref={ref} onKeyDown={handleKey}></textarea>
             </form>
         </StyledEditor>
     )

@@ -4,7 +4,8 @@ import styled from 'styled-components';
 const StyledQuestion = styled.div`
     flex: 30;
     height: 87vh;
-    background-color: #10386f;
+    background-color: #104765;
+    /* background-color: #10386f; */
     border-top: 2px solid #D7D7D7;
     border-right: 2px solid #D7D7D7;
     border-bottom: 2px solid #D7D7D7;

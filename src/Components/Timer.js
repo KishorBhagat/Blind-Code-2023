@@ -50,8 +50,7 @@ const Timer = ({minutes, setTimeover, pageSwitched}) => {
 
   return (
     <StyledTimer>
-        Time remaining - <span>{ (mins<10)? '0'+mins : mins } : { (secs<10) ? '0'+secs : secs}</span>
-        {/* {(secs===0 && mins===0) && <p>Game Over</p>} */}
+      Time remaining - <span>{ (mins<10)? '0'+mins : mins } : { (secs<10) ? '0'+secs : secs}</span> mins
     </StyledTimer>
   )
 }

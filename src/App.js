@@ -3,7 +3,7 @@ import Register from './Pages/Register';
 import Contest from './Pages/Contest';
 import GlobalStyle from './GlobalStyle';
 import Instructions from './Pages/Instructions';
-import Thanks from './Pages/Thanks';
+import Thanks from './Components/Thanks';
 import { useState } from 'react';
 
 function App() {

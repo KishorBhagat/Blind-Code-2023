@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 
 const StyledContest = styled.div`
-    background-color: #10386f;
+    background-color: #104765;
+    /* background-color: #10386f; */
     color: white;
     padding: 10px 15px;
     width: 100%;
