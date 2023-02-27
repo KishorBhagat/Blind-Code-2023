@@ -90,7 +90,7 @@ const Editor = (props, ref) => {
                 // console.log(response.data);
             } catch (error) {
                 localStorage.clear();         
-                // console.log(error);
+                console.log(error);
             }
         }
         getQuestion();
@@ -98,11 +98,8 @@ const Editor = (props, ref) => {
 
 
     const handleKey = (e)=> {
-        // console.log(e.code);
         if(e.code == 'Tab'){
             e.preventDefault();
-            // console.log("hey indent req");
-            // console.log(ref.current.value + '\t' + "Tabbed");
             ref.current.value = ref.current.value + '    ';
         }
     }

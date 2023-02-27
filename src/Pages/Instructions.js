@@ -18,7 +18,7 @@ const StyledInstructions = styled.div`
     .logo{
       position: absolute;
       top: 10px;
-      left: 10px;
+      left: 100px;
       height: 100px;
       width: 100px;
     }

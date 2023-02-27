@@ -94,13 +94,22 @@ const Register = ({setIsuser}) => {
     navigate('/');
   }
 
+  const handleKeyDown = (e) => {
+    console.log(e.code);
+    if(e.code == 'Enter'){
+      e.preventDefault();
+      // console.log("hey indent req");
+      // console.log(ref.current.value + '\t' + "Tabbed");
+    }
+  }
+
   return (
     <StyledRegister>
       <div className="register">
         <form onSubmit={handleSubmit}>
-          <input spellCheck="false" autoComplete='off' name="name" type="text" placeholder='Full name' required />
-          <input spellCheck="false" autoComplete='off' name="regdNo" type="text" placeholder='Registration No.' required />
-          <input spellCheck="false" autoComplete='off' name="branch" type="text" placeholder='Branch' required />
+          <input onKeyDown={handleKeyDown} spellCheck="false" autoComplete='off' name="name" type="text" placeholder='Full name' required />
+          <input onKeyDown={handleKeyDown} spellCheck="false" autoComplete='off' name="regdNo" type="text" placeholder='Registration No.' required />
+          <input onKeyDown={handleKeyDown} spellCheck="false" autoComplete='off' name="branch" type="text" placeholder='Branch' required />
           <button type='submit'>START</button>
         </form>
       </div>
