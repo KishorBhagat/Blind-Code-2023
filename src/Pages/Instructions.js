@@ -36,6 +36,7 @@ const StyledInstructions = styled.div`
           margin: 20px 0;
           span{
             font-size: 22px;
+            color: #f37c1e;
           }
           p{
             font-size: 22px;
@@ -76,7 +77,7 @@ const Instructions = () => {
           <h1>INSTRUCTIONS</h1>
         </div>
         <div className='points'>
-            <div className='point'><span>1. </span><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste ut, totam hic cumque aliquid sit. Perspiciatis dolor aut natus ipsam.</p></div>
+            <div className='point'><span>1. &nbsp;</span><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste ut, totam hic cumque aliquid sit. Perspiciatis dolor aut natus ipsam.</p></div>
             <div className='point'><span>2. </span><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste ut, totam hic cumque aliquid sit. Perspiciatis dolor aut natus ipsam.</p></div>
             <div className='point'><span>3. </span><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste ut, totam hic cumque aliquid sit. Perspiciatis dolor aut natus ipsam.</p></div>
             <div className='point'><span>4. </span><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste ut, totam hic cumque aliquid sit. Perspiciatis dolor aut natus ipsam.</p></div>

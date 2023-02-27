@@ -95,8 +95,8 @@ const Register = ({setIsuser}) => {
     <StyledRegister>
       <div className="register">
         <form onSubmit={handleSubmit}>
-          <input name="name" type="text" placeholder='Full name' required />
-          <input name="regdNo" type="text" placeholder='Registration No.' required />
+          <input autoComplete='off' name="name" type="text" placeholder='Full name' required />
+          <input autoComplete='off' name="regdNo" type="text" placeholder='Registration No.' required />
           <input autoComplete='off' name="branch" type="text" placeholder='Branch' required />
           <button type='submit'>START</button>
         </form>

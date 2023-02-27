@@ -7,7 +7,7 @@ const StyledThanks = styled.div`
     background-color: white;
     height: 100vh;
     /* filter: blur(8px); */
-    opacity: 0.2;
+    opacity: 0.15;
   }
   .thanksBox{
     position: absolute;
