@@ -29,7 +29,8 @@ const StyledRegister = styled.main`
           border-radius: 5px;
           border: 2px solid black;
           :focus{
-            outline: 2px solid #f37c1e;
+            /* outline: 2px solid #f37c1e; */
+            outline: 2px solid var(--enigma-green);
             /* border: 2px solid #f37c1e; */
           }
         }
@@ -42,7 +43,8 @@ const StyledRegister = styled.main`
           margin-top: 20px;
           cursor: pointer;
           border: none;
-          background-color: #f37c1e;
+          /* background-color: #f37c1e; */
+          background-color: var(--enigma-green);
           color: white;
           transition: 0.2s all;
           :hover{
@@ -62,7 +64,8 @@ const StyledRegister = styled.main`
       left: calc(50% - 500px);
       cursor: pointer;
       background-color: transparent;
-      color: #f37c1e;
+      /* color: #1af302; */
+      color: var(--enigma-green);
       font-size: 30px;
       font-weight: 500;
       border: none;
@@ -95,9 +98,9 @@ const Register = ({setIsuser}) => {
     <StyledRegister>
       <div className="register">
         <form onSubmit={handleSubmit}>
-          <input autoComplete='off' name="name" type="text" placeholder='Full name' required />
-          <input autoComplete='off' name="regdNo" type="text" placeholder='Registration No.' required />
-          <input autoComplete='off' name="branch" type="text" placeholder='Branch' required />
+          <input spellCheck="false" autoComplete='off' name="name" type="text" placeholder='Full name' required />
+          <input spellCheck="false" autoComplete='off' name="regdNo" type="text" placeholder='Registration No.' required />
+          <input spellCheck="false" autoComplete='off' name="branch" type="text" placeholder='Branch' required />
           <button type='submit'>START</button>
         </form>
       </div>

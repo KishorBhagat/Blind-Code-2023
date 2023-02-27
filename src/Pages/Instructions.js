@@ -11,18 +11,26 @@ const StyledInstructions = styled.div`
     justify-content: center;
     height: 100vh;
     background-color: black;
-    /* background-color: #104765; */
 
-    /* color: #D6D6D6; */
+    /* color: white; */
     color: #D7D7D7;
+
+    .logo{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      height: 100px;
+      width: 100px;
+    }
     .instructions{
       /* margin-bottom: 50px; */
       padding-bottom: 100px;
       width: 1000px;
       .heading{
         margin-bottom: 40px;
-        /* color: #ff0000; */
-        color: #f37c1e;
+        /* color: #f37c1e; */
+        color: var(--enigma-green);
+
 
         h1{
           text-align: center;
@@ -36,7 +44,9 @@ const StyledInstructions = styled.div`
           margin: 20px 0;
           span{
             font-size: 22px;
-            color: #f37c1e;
+            /* color: #f37c1e; */
+            color: var(--enigma-green);
+
           }
           p{
             font-size: 22px;
@@ -52,7 +62,8 @@ const StyledInstructions = styled.div`
       right: calc(50% - 500px);
       cursor: pointer;
       background-color: transparent;
-      color: #f37c1e;
+      /* color: #f37c1e; */
+      color: var(--enigma-green);
       font-size: 30px;
       font-weight: 500;
       border: none;
@@ -71,6 +82,7 @@ const Instructions = () => {
   const {round} = useContext(QuestionContext);
   return (
     <StyledInstructions>
+      <img className='logo' src="Enigmalogo.png" alt="" />
       <div className="instructions">
         <div className="heading">
           <h1>Round - {round}</h1>

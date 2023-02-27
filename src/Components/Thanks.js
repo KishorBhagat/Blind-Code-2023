@@ -22,6 +22,7 @@ const StyledThanks = styled.div`
     left: calc(50% - 250px);
     background-color: white;
     /* color: #D7D7D7; */
+    color: var(--enigma-green);
     filter:drop-shadow(5px 5px 10px black);
     
   }

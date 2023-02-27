@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Poppins', sans-serif;
         /* outline: 1px solid red; */
     }
+    :root{
+        --enigma-green: #35ff1f;
+        --enigma-green: #4fb848;
+    }
     body{
         height: 100vh;
         overflow: hidden;
