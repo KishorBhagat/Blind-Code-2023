@@ -1,3 +1,4 @@
+import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 import axios from 'axios';
 import React, { forwardRef, useContext } from 'react'
 import styled from 'styled-components';
@@ -18,6 +19,7 @@ const StyledEditor = styled.div`
             padding: 10px 15px;
             font-size: 18px;
             caret-color: currentColor;
+            /* color: var(--enigma-green); */
             ::selection {
                 background-color: transparent;
             }
@@ -40,35 +42,14 @@ const StyledEditor = styled.div`
 `;
 
 const Editor = (props, ref) => {
-
+    
     const { name, regdNo, branch, viewCount, timeover } = props;
-    const {round} = useContext(QuestionContext);
+    const {round, setMinutes} = useContext(QuestionContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const code = e.target.elements[1].value;
-        const formObj = {
-            name,
-            regdNo,
-            branch,
-            code,
-            viewCount
-        }
-
-        const getQuestion = async () => {
-            try {
-                const response = await axios.post('https://blind-code.onrender.com/api/code/submitcode', formObj);
-                // ref.current.style.color = "green";
-                ref.current.style.color = "#D7D7D7";
-                ref.current.setAttribute('readOnly', "on")
-                console.log(response.data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        getQuestion();
+        props.setSubmitBtnHandler(true);
     }
-
     
     if(timeover){
         const code = ref.current.value;
@@ -80,33 +61,34 @@ const Editor = (props, ref) => {
             code,
             viewCount
         }
-        const getQuestion = async () => {
+        const submitResponse = async () => {
             try {
                 const response = await axios.post('https://blind-code.onrender.com/api/code/submitcode', formObj);
                 // ref.current.style.color = "green";
                 ref.current.style.color = "#D7D7D7";
                 ref.current.setAttribute('readOnly', "on");
                 localStorage.clear();         
-                // console.log(response.data);
             } catch (error) {
                 localStorage.clear();         
                 console.log(error);
             }
         }
-        getQuestion();
+        submitResponse();
     }
 
 
     const handleKey = (e)=> {
         if(e.code == 'Tab'){
             e.preventDefault();
-            ref.current.value = ref.current.value + '    ';
+            let caretPos = e.currentTarget.selectionStart;
+            ref.current.value = e.currentTarget.value.substring(0, caretPos) + '    ' + e.currentTarget.value.substring(caretPos);
+            e.currentTarget.setSelectionRange(caretPos+4, caretPos+4);
         }
     }
 
     return (
         <StyledEditor className='editor'>
-            <form id='editorForm'>
+            <form id='editorForm' onSubmit={handleSubmit}>
                 <textarea spellCheck="false" ref={ref} onKeyDown={handleKey}></textarea>
             </form>
         </StyledEditor>

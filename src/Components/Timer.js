@@ -12,8 +12,7 @@ const StyledTimer = styled.span`
   } */
 `;
 
-const Timer = ({minutes, setTimeover, pageSwitched}) => {
-
+const Timer = ({minutes, setTimeover, pageSwitched, submitBtnHandler}) => {
   const [mins, setMins] = useState(minutes);
   const [secs, setSecs] = useState(0);
 
@@ -39,6 +38,12 @@ const Timer = ({minutes, setTimeover, pageSwitched}) => {
 
     if(secs===0 && mins===0){
       return setTimeover(true);
+    }
+    
+    if(submitBtnHandler){
+      setMins(0);
+      setSecs(0);
+      return;
     }
     
   }, [secs, pageSwitched]);

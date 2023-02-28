@@ -21,6 +21,7 @@ const StyledRegister = styled.main`
         justify-content: center;
         align-items: center;
 
+        
         input{
           width: 400px;
           margin: 8px;
@@ -28,10 +29,16 @@ const StyledRegister = styled.main`
           font-size: 18px;
           border-radius: 5px;
           border: 2px solid black;
+          caret-color: black;
           :focus{
             /* outline: 2px solid #f37c1e; */
             outline: 2px solid var(--enigma-green);
             /* border: 2px solid #f37c1e; */
+          }
+          ::-webkit-outer-spin-button,
+          ::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
           }
         }
 
@@ -72,7 +79,7 @@ const StyledRegister = styled.main`
     }
 `;
 
-const Register = ({setIsuser}) => {
+const Register = ({ setIsuser }) => {
   const navigate = useNavigate();
 
   const formData = {};
@@ -95,11 +102,22 @@ const Register = ({setIsuser}) => {
   }
 
   const handleKeyDown = (e) => {
-    console.log(e.code);
-    if(e.code == 'Enter'){
+    if (e.code == 'Enter') {
       e.preventDefault();
-      // console.log("hey indent req");
-      // console.log(ref.current.value + '\t' + "Tabbed");
+    }
+  }
+
+  const [lengthError, setLengthError] = useState(false);
+  const handleChange = (e) => {
+    if (e.target.value.length !== 10) {
+      setLengthError(true);
+      e.target.style.color = "red";
+      // e.target.style.outline = "2px solid red";
+    }
+    else if (e.target.value.length == 10 || e.target.value.length == 0) {
+      setLengthError(false);
+      e.target.style.color = "black";
+      // e.target.style.outline = "2px solid var(--enigma-green)";
     }
   }
 
@@ -108,7 +126,7 @@ const Register = ({setIsuser}) => {
       <div className="register">
         <form onSubmit={handleSubmit}>
           <input onKeyDown={handleKeyDown} spellCheck="false" autoComplete='off' name="name" type="text" placeholder='Full name' required />
-          <input onKeyDown={handleKeyDown} spellCheck="false" autoComplete='off' name="regdNo" type="text" placeholder='Registration No.' required />
+          <input onKeyDown={handleKeyDown} spellCheck="false" autoComplete='off' name="regdNo" type="number" placeholder='Registration No.' required />
           <input onKeyDown={handleKeyDown} spellCheck="false" autoComplete='off' name="branch" type="text" placeholder='Branch' required />
           <button type='submit'>START</button>
         </form>

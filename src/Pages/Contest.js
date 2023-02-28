@@ -24,6 +24,25 @@ const StyledContest = styled.div`
     top: 62px;
   }
 
+  .submitBtn{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    button{
+      padding: 5px 20px;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      font-size: 15px;
+      background-color: #ff0000;
+      cursor: pointer;
+      transition: 0.05s ease all;
+      :active{
+        transform: scale(0.95);
+      }
+    }
+  }
+
   .show{
       position: fixed;
       width: fit-content;
@@ -111,7 +130,7 @@ const Contest = () => {
       setViewChances(viewChances - 1);
       setViewCount(4 - viewChances);
       // editorRef.current.style.color = "green"; 
-      editorRef.current.style.color = "#D7D7D7"; 
+      editorRef.current.style.color = "#D7D7D7";
       showBtnRef.current.setAttribute('disabled', true);
       editorRef.current.focus();
 
@@ -122,19 +141,19 @@ const Contest = () => {
 
     }
   }
-  
-  useEffect(()=>{
 
-    if(timeover){
+  useEffect(() => {
+
+    if (timeover) {
       setTimeout(() => {
         mainRef.current.style.zIndex = "-1"
-        
+
       }, 2000);
     }
   }, [timeover])
 
   const handleVisibilityChange = (event) => {
-    if(document.visibilityState === 'hidden'){
+    if (document.visibilityState === 'hidden') {
       setPageSwitched(true);
     }
     else {
@@ -149,19 +168,21 @@ const Contest = () => {
       window.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
-  
+
+  const [submitBtnHandler, setSubmitBtnHandler] = useState(false);
+
   return (
     <StyledContest>
       <Thanks />
 
       <div className='contest' ref={mainRef}>
 
-        <span className='timer'><Timer minutes={minutes} setTimeover={setTimeover} pageSwitched={pageSwitched}/></span>
-        {/* <span><button type='submit' form='editorForm' >Submit</button></span> */}
+        <span className='timer'><Timer minutes={minutes} setTimeover={setTimeover} pageSwitched={pageSwitched} submitBtnHandler={submitBtnHandler}/></span>
+        <span className="submitBtn"><button type='submit' form='editorForm' >Submit</button></span>
 
         <ContestantDetails name={name} regdNo={regdNo} branch={branch} />
         <div className="container">
-          <Editor ref={editorRef} name={name} regdNo={regdNo} branch={branch} viewCount={viewCount} timeover={timeover}/>
+          <Editor ref={editorRef} name={name} regdNo={regdNo} branch={branch} viewCount={viewCount} timeover={timeover} setTimeover={setTimeover} setSubmitBtnHandler={setSubmitBtnHandler}/>
           <Question question={question} />
         </div>
 

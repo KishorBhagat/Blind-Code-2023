@@ -93,7 +93,7 @@ const Instructions = () => {
             <div className='point'><span>2. </span><p>You will have to write your code blindfolded, means you will be typing the code but you won't be able to see what you are typing.</p></div>
             <div className='point'><span>3. </span><p>You will get three chances to see your code during the contest. When you use a chance , your code will be revealed on the screen for a limited time. After the time is up your code will disappear again.</p></div>
             <div className='point'><span>4. </span><p>You are not allowed to copy-paste any external resources during the contest.</p></div>
-            <div className='point'><span>5. </span><p>Winners will be evaluated on the basis of correctness of code, completeness of code and the least number of chances used to see the code.</p></div>
+            <div className='point'><span>5. </span><p>Winners will be selected on the basis of correctness of code, completeness of code and the least number of chances used to see the code.</p></div>
         </div>
       </div>
         <button className='next' onClick={handleNext}>Next &rarr;</button>
