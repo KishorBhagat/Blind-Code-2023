@@ -42,6 +42,7 @@ const StyledInstructions = styled.div`
           align-items: flex-start;
           gap: 10px;
           margin: 20px 0;
+          font-weight: 300;
           span{
             font-size: 22px;
             /* color: #f37c1e; */

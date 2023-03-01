@@ -24,8 +24,8 @@ function App() {
         <Routes>
             <Route path='/' element={<Instructions />} />
             <Route path='/register' element={<Register setIsuser={setIsuser}/>} />
-            <Route path='/contest' element={<ProtectedRoute><Contest /></ProtectedRoute>} />
-            {/* <Route path='/contest' element={<Contest />} /> */}
+            {/* <Route path='/contest' element={<ProtectedRoute><Contest /></ProtectedRoute>} /> */}
+            <Route path='/contest' element={<Contest />} />
             <Route path='/thanks' element={<Thanks />} />
         </Routes>
       </BrowserRouter>
