@@ -13,6 +13,23 @@ const StyledContest = styled.div`
 
   .container{
     display: flex;
+    .editor-container{
+      flex: 70;
+      /* height: calc(100vh - 114px); */
+
+    }
+    .question-container{
+      flex: 30;
+      /* height: calc(100vh - 113px); */
+    }
+    @media (max-width: 1300px){
+      .editor-container{
+        flex: 60;
+      }
+      .question-container{
+        flex: 40;
+      }
+    }
   }
 
   .timer{
@@ -21,8 +38,11 @@ const StyledContest = styled.div`
     color: #fff;
     /* right: 30%; */
     left: 70%;
-    top: 62px;
+    top: 73px;
     font-size: 18px;
+    @media (max-width: 1300px){
+      left: 60%;
+    }
   }
 
   .submitBtn{
@@ -50,7 +70,7 @@ const StyledContest = styled.div`
   .show{
       position: fixed;
       width: fit-content;
-      top: 40px;
+      top: 53px;
       right: 20px;
       button{
         padding: 5px;
@@ -90,8 +110,6 @@ const StyledContest = styled.div`
     .contest{
       position: relative;
       top: -100%;
-      /* z-index: -1; */
-      /* filter: blur(1px); */
       z-index: 10;
     }
 `;
@@ -112,9 +130,6 @@ const Contest = () => {
 
   const [pageSwitched, setPageSwitched] = useState(false);
 
-
-  // const question = "Write a program to print the following pattern given below.\n\t\t\t1\n\t\t\t1 2\n\t\t\t1 2 3";
-  // const minutes = 1;
   const { minutes, question, setMinutes } = useContext(QuestionContext);
 
   useEffect(() => {
@@ -176,6 +191,12 @@ const Contest = () => {
 
   const [submitBtnHandler, setSubmitBtnHandler] = useState(false);
 
+  const [height, setHeight] = useState(0)
+  const detailsRef = useRef(null);
+  useEffect(() => {
+    setHeight(detailsRef.current.clientHeight)
+  }, [])
+  
   return (
     <StyledContest>
       <Thanks />
@@ -185,10 +206,10 @@ const Contest = () => {
         <span className='timer'><Timer minutes={minutes} setTimeover={setTimeover} pageSwitched={pageSwitched} submitBtnHandler={submitBtnHandler}/></span>
         <span className="submitBtn"><button type='submit' form='editorForm' >Submit</button></span>
 
-        <ContestantDetails name={name} regdNo={regdNo} branch={branch} />
+        <div ref={detailsRef}><ContestantDetails name={name} regdNo={regdNo} branch={branch}/></div>
         <div className="container">
-          <Editor ref={editorRef} name={name} regdNo={regdNo} branch={branch} viewCount={viewCount} timeover={timeover} setTimeover={setTimeover} setSubmitBtnHandler={setSubmitBtnHandler}/>
-          <Question question={question} />
+          <div className='editor-container' style={{height: `calc(100vh - ${height+0.5}px)`}}><Editor ref={editorRef} name={name} regdNo={regdNo} branch={branch} viewCount={viewCount} timeover={timeover} setTimeover={setTimeover} setSubmitBtnHandler={setSubmitBtnHandler}/></div>
+          <div className='question-container' style={{height: `calc(100vh - ${height+0.5}px)`}}><Question question={question} /></div>
         </div>
 
         <div className='show'>

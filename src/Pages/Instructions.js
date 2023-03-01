@@ -16,7 +16,7 @@ const StyledInstructions = styled.div`
     color: #D7D7D7;
 
     .logo{
-      position: absolute;
+      position: fixed;
       top: 10px;
       left: 100px;
       height: 100px;
@@ -24,7 +24,7 @@ const StyledInstructions = styled.div`
     }
     .instructions{
       /* margin-bottom: 50px; */
-      padding-bottom: 100px;
+      padding: 0 0 50px 0;
       width: 1000px;
       .heading{
         margin-bottom: 40px;

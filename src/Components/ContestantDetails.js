@@ -3,11 +3,9 @@ import styled from 'styled-components';
 
 const StyledContest = styled.div`
     background-color: #104765;
-    /* background-color: #10386f; */
     color: white;
     padding: 10px 15px;
     width: 100%;
-    height: 13vh;
     line-height: 1.8;
     font-size: 17px;
     border-top: 2px solid #D7D7D7;
@@ -16,7 +14,7 @@ const StyledContest = styled.div`
     .details{
       display: flex;
       .tag{
-        width: 100px;
+        width: 90px;
         display: flex;
         justify-content: space-between;
       }
@@ -27,6 +25,7 @@ const StyledContest = styled.div`
 `;
 
 const ContestantDetails = ({name, regdNo, branch}) => {
+
   return (
     <StyledContest>
         <div className='details'>

@@ -6,9 +6,11 @@ import Swal from 'sweetalert2';
 import { QuestionContext } from '../Context/QuestionContext';
 
 const StyledEditor = styled.div`
-    flex: 70;
+    /* flex: 70; */
+    height: 100%;
     form{
-        height: 87vh;
+        /* height: 87vh; */
+        height: 100%;
         
         textarea{
             font-family: 'Source Code Pro', monospace;
