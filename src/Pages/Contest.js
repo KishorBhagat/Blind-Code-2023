@@ -22,21 +22,25 @@ const StyledContest = styled.div`
     /* right: 30%; */
     left: 70%;
     top: 62px;
+    font-size: 18px;
   }
 
   .submitBtn{
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     right: 20px;
     button{
       padding: 5px 20px;
-      border-radius: 5px;
+      border-radius: 3px;
       border: none;
       color: #fff;
       font-size: 15px;
       background-color: #ff0000;
       cursor: pointer;
-      transition: 0.05s ease all;
+      transition: 0.05s all;
+      :hover{
+        filter: drop-shadow(0 0 0.2rem #ff0000);
+      }
       :active{
         transform: scale(0.95);
       }
@@ -50,12 +54,15 @@ const StyledContest = styled.div`
       right: 20px;
       button{
         padding: 5px;
-        border-radius: 5px;
+        border-radius: 3px;
         border: none;
         color: #fff;
         background-color: #ff0000;
         cursor: pointer;
         transition: 0.05s ease all;
+        :hover{
+          filter: drop-shadow(0 0 0.2rem #ff0000);
+        }
         :active{
           transform: scale(0.95);
         }
@@ -145,10 +152,8 @@ const Contest = () => {
   useEffect(() => {
 
     if (timeover) {
-      setTimeout(() => {
-        mainRef.current.style.zIndex = "-1"
-
-      }, 2000);
+      mainRef.current.style.zIndex = "-1"
+      return () => setTimeover(false);
     }
   }, [timeover])
 

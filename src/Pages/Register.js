@@ -23,17 +23,20 @@ const StyledRegister = styled.main`
 
         
         input{
-          width: 400px;
+          width: 420px;
           margin: 8px;
-          padding: 10px;
-          font-size: 18px;
-          border-radius: 5px;
-          border: 2px solid black;
-          caret-color: black;
+          padding: 12px;
+          font-size: 20px;
+          font-weight: 300;
+          border-radius: 3px;
+          /* border: 2px solid black;
+          caret-color: black; */
+          border: 1px solid var(--enigma-green);
+          background: black;
+          color: #D7D7D7;
           :focus{
-            /* outline: 2px solid #f37c1e; */
             outline: 2px solid var(--enigma-green);
-            /* border: 2px solid #f37c1e; */
+            filter: drop-shadow(0 0 0.2rem var(--enigma-green));
           }
           ::-webkit-outer-spin-button,
           ::-webkit-inner-spin-button {
@@ -45,7 +48,7 @@ const StyledRegister = styled.main`
         button[type='submit']{
           width: fit-content;
           padding: 5px 20px;
-          border-radius: 5px;
+          border-radius: 3px;
           font-size: 18px;
           margin-top: 20px;
           cursor: pointer;
@@ -54,11 +57,19 @@ const StyledRegister = styled.main`
           background-color: var(--enigma-green);
           color: white;
           transition: 0.2s all;
+          opacity: 0.9;
           :hover{
-            opacity: 0.5;
+            opacity: 1;
+            filter: drop-shadow(0 0 0.2rem var(--enigma-green));
           }
           :active{
             opacity: 1;
+          }
+          :focus{
+            opacity: 1;
+            border: none;
+            outline: none;
+            filter: drop-shadow(0 0 0.2rem var(--enigma-green));
           }
         }
       }
@@ -76,6 +87,11 @@ const StyledRegister = styled.main`
       font-size: 30px;
       font-weight: 500;
       border: none;
+      transition: 0.2s all;
+      :hover{
+        filter: drop-shadow(0 0 0.05rem var(--enigma-green));
+
+      }
     }
 `;
 
@@ -102,22 +118,17 @@ const Register = ({ setIsuser }) => {
   }
 
   const handleKeyDown = (e) => {
-    if (e.code == 'Enter') {
+    if (e.code === 'Enter') {
       e.preventDefault();
     }
   }
 
-  const [lengthError, setLengthError] = useState(false);
   const handleChange = (e) => {
     if (e.target.value.length !== 10) {
-      setLengthError(true);
       e.target.style.color = "red";
-      // e.target.style.outline = "2px solid red";
     }
-    else if (e.target.value.length == 10 || e.target.value.length == 0) {
-      setLengthError(false);
-      e.target.style.color = "black";
-      // e.target.style.outline = "2px solid var(--enigma-green)";
+    else if (e.target.value.length === 10 || e.target.value.length === 0) {
+      e.target.style.color = "#D7D7D7";
     }
   }
 
@@ -126,7 +137,9 @@ const Register = ({ setIsuser }) => {
       <div className="register">
         <form onSubmit={handleSubmit}>
           <input onKeyDown={handleKeyDown} spellCheck="false" autoComplete='off' name="name" type="text" placeholder='Full name' required />
-          <input onKeyDown={handleKeyDown} spellCheck="false" autoComplete='off' name="regdNo" type="number" placeholder='Registration No.' required />
+          <input onKeyDown={handleKeyDown} 
+          // onChange={handleChange} 
+          spellCheck="false" autoComplete='off' name="regdNo" type="number" placeholder='Registration No.' required />
           <input onKeyDown={handleKeyDown} spellCheck="false" autoComplete='off' name="branch" type="text" placeholder='Branch' required />
           <button type='submit'>START</button>
         </form>

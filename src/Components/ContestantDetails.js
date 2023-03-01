@@ -9,17 +9,20 @@ const StyledContest = styled.div`
     width: 100%;
     height: 13vh;
     line-height: 1.8;
-    /* font-size: 18px; */
+    font-size: 17px;
     border-top: 2px solid #D7D7D7;
     border-right: 2px solid #D7D7D7;
     border-left: 2px solid #D7D7D7;
     .details{
       display: flex;
       .tag{
-        width: 85px;
+        width: 100px;
         display: flex;
         justify-content: space-between;
       }
+      /* .value{
+        color: #35ff1f;
+      } */
     }
 `;
 
@@ -30,19 +33,19 @@ const ContestantDetails = ({name, regdNo, branch}) => {
           <div className='tag'>
             <span>Name</span><span>:&nbsp;&nbsp;</span>
           </div>
-          <div>{name}</div>
+          <div className='value'>{name}</div>
         </div>
         <div className='details'>
           <div className='tag'>
             <span>Regd No</span><span>:&nbsp;&nbsp;</span>
           </div>
-          <div>{regdNo}</div>
+          <div className='value'>{regdNo}</div>
         </div>
         <div className='details'>
           <div className='tag'>
             <span>Branch</span><span>:&nbsp;&nbsp;</span>
           </div>
-          <div>{branch}</div>
+          <div className='value'>{branch}</div>
         </div>
         {/* <p>Name : &nbsp;&nbsp;{name}</p> */}
         {/* <p>Regd No : &nbsp;&nbsp;{regdNo}</p> */}

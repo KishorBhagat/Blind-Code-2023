@@ -2,6 +2,7 @@ import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 import axios from 'axios';
 import React, { forwardRef, useContext } from 'react'
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 import { QuestionContext } from '../Context/QuestionContext';
 
 const StyledEditor = styled.div`
@@ -36,6 +37,7 @@ const StyledEditor = styled.div`
             :focus{
                 outline: none;
                 border: 2px solid #08f308;
+                filter: drop-shadow(0 0 0.05rem #08f308);
             }
         }
     }
@@ -43,15 +45,36 @@ const StyledEditor = styled.div`
 
 const Editor = (props, ref) => {
     
-    const { name, regdNo, branch, viewCount, timeover } = props;
+    const { name, regdNo, branch, viewCount, timeover, setTimeover } = props;
     const {round, setMinutes} = useContext(QuestionContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.setSubmitBtnHandler(true);
+        Swal.fire({
+            title: 'Are you sure to submit?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Submit'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            //   Swal.fire({
+            //     title: 'Thank you!',
+            //     text: "Your response has been submitted!",
+            //     icon: 'success',
+            //     showCancelButton: false,
+            //     showConfirmButton: false,
+            //     allowOutsideClick: false
+            //   });
+                props.setSubmitBtnHandler(true);
+            }
+          });
     }
     
     if(timeover){
+        ref.current.style.color = "#D7D7D7";
+        ref.current.setAttribute('readOnly', "on");
         const code = ref.current.value;
         const formObj = {
             name,
@@ -65,13 +88,13 @@ const Editor = (props, ref) => {
             try {
                 const response = await axios.post('https://blind-code.onrender.com/api/code/submitcode', formObj);
                 // ref.current.style.color = "green";
-                ref.current.style.color = "#D7D7D7";
-                ref.current.setAttribute('readOnly', "on");
-                localStorage.clear();         
+                console.log(response);
+                localStorage.clear();
             } catch (error) {
                 localStorage.clear();         
                 console.log(error);
             }
+            setSelectionRange(false)
         }
         submitResponse();
     }

@@ -67,6 +67,10 @@ const StyledInstructions = styled.div`
       font-size: 30px;
       font-weight: 500;
       border: none;
+      transition: 0.2s all;
+      :hover{
+        filter: drop-shadow(0 0 0.05rem var(--enigma-green));
+      }
     }
 `;
 

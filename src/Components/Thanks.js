@@ -4,12 +4,13 @@ import styled from 'styled-components';
 const StyledThanks = styled.div`
   .background{
     position: relative;
-    background-color: white;
+    background-color: black;
     height: 100vh;
     /* filter: blur(8px); */
-    opacity: 0.15;
+    opacity: 0.3;
   }
   .thanksBox{
+    border-radius: 5px;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -29,11 +30,11 @@ const StyledThanks = styled.div`
     
     p{
       font-size: 50px;
-      color: #02be02;
+      color: #28a745;
     }
     h4{
       font-weight: 400;
-      /* color: black; */
+      color: #545454;
     }
   }
 `;
@@ -44,7 +45,7 @@ const Thanks = () => {
       <div className='background'></div>
       <div className='thanksBox'>
         <p>Thank You!</p>
-        <h4>Your response is submitted!</h4>
+        <h4>Your response is submitted.</h4>
       </div>
     </StyledThanks>
   )
