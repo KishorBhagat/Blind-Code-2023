@@ -44,7 +44,9 @@ const StyledRegister = styled.main`
             margin: 0;
           }
         }
-
+        input[type=number]{
+          -moz-appearance: textfield;
+        }
         button[type='submit']{
           width: fit-content;
           padding: 5px 20px;

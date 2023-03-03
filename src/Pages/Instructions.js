@@ -30,9 +30,9 @@ const StyledInstructions = styled.div`
         margin-bottom: 40px;
         /* color: #f37c1e; */
         color: var(--enigma-green);
-
-
+        
         h1{
+          font-weight: 600;
           text-align: center;
         }
       }

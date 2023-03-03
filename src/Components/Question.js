@@ -23,11 +23,12 @@ const StyledQuestion = styled.div`
         }
     }
     textarea{
+        font-family: 'Source Code Pro', monospace;
         flex: 15;
         resize: none;
         width: 100%;
         background-color: inherit;
-        font-size: 18px;
+        font-size: 16px;
         color: #D7D7D7;
         border: none;
         outline: none;
